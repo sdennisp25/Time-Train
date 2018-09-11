@@ -27,7 +27,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-4">
 			<div class="card card-default">
 					<div class="card-header">
 						<form>
@@ -40,24 +40,25 @@
 								<label>Destination</label>
 								<input type="text" class="form-control" id="destination-input">
 							</div>
-				
+							
+							
 							<div class="form-group row">
-								<label>First Train Time</label>
+								<label>First Train Time (HH:mm - military time)</label>
 								<input type="text" class="form-control" id="start-input">
-							</div>
-						
+							</div>						
+							
 							<div class="form-group row">
 								<label>Frequency (minutes)</label>
 								<input type="text" class="form-control" id="frequency-input">
 							</div>
-						
+
 							<button type="submit" class="btn btn-primary" id="add-info">Submit</button>
 						</form>
 					</div>
 			</div>
 		</div>
 		
-		<div  class="col-md-6">
+		<div  class="col-md-8">
 			<div class="card card-default">
 				<div class="card-header">
 					<table class="table">
@@ -65,18 +66,18 @@
 							<tr>
 								<th scope="col">Name</th>
 								<th scope="col">Destination</th>
-								<th scope="col">Train Start</th>
 								<th scope="col">Frequency (min)</th>
 								<th scope="col">Next Arrival</th>
+								<th scope="col">Minutes Away</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th id="nameDisplay"></th>
-								<th id="destinationDisplay"></th>
-								<th id="startDisplay"></th>
-								<th id="frequencyDisplay"></th>
-								<th id="arrivalDisplay"></th>
+								<td id="nameDisplay"></td>
+								<td id="destinationDisplay"></td>
+								<td id="frequencyDisplay"></td>
+								<td id="arrivalDisplay"></td>
+								<td id="minutesAway"></td>
 							</tr>
 						</tbody>
 					</table>

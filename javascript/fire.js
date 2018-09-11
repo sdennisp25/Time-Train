@@ -31,23 +31,22 @@ $("#add-info").on("click", function(event) {
 	var currentTime = moment();
 	console.log(currentTime);
 	
-	var timeConvert = moment(currentTime, "HH:mm").subtract(1, "years");
+	var timeConvert = moment.duration(currentTime).asMinutes();
 	console.log(timeConvert);
 	
 	var timeDiff = moment().diff(moment(timeConvert), "minutes");
 	console.log("Difference in min: " + timeDiff);
 
 	var timeRemaining = timeDiff % frequency;
-	console.log(timeRemaining);
+	console.log("Time Remaining: " + timeRemaining);
+	$("#minutesAway").text(timeRemaining);
 });
 
 
 database.ref().on("child_added", function(snapshot) {
 	$("#nameDisplay").text(snapshot.val().name);
 	$("#destinationDisplay").text(snapshot.val().destination);
-	$("#startDisplay").text(snapshot.val().start);
 	$("#frequencyDisplay").text(snapshot.val().frequency);
-	
-	
+	$("#arrivalDisplay").text(snapshot.val().start);
 })
 
