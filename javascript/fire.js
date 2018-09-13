@@ -27,26 +27,45 @@ $("#add-info").on("click", function(event) {
 		frequency: frequency,
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	})
-	
+	var startTime = moment(start, "HH:mm").subtract(1, "years");
 	var currentTime = moment();
-	console.log(currentTime);
-	
 	var timeConvert = moment.duration(currentTime).asMinutes();
-	console.log(timeConvert);
-	
 	var timeDiff = moment().diff(moment(timeConvert), "minutes");
-	console.log("Difference in min: " + timeDiff);
-
 	var timeRemaining = timeDiff % frequency;
-	console.log("Time Remaining: " + timeRemaining);
+	var arrivalTime = currentTime.add(timeRemaining, "minutes").format("LT")
+
 	$("#minutesAway").text(timeRemaining);
+
+	console.log(currentTime);
+	console.log(timeConvert);
+	console.log("Difference in min: " + timeDiff);
+	console.log("Time Remaining: " + timeRemaining);
+
+	var tableRow = $("<tr>").append(
+		$("<td>").text(name),
+		$("<td>").text(destination),
+		$("<td>").text(frequency),
+		$("<td>").text(arrivalTime),
+		$("<td>").text(timeRemaining),
+	);
+
+	$("tbody").append(tableRow);
 });
 
+// database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+// 	$("#nameDisplay2").text(snapshot.val().name);
+// 	$("#destinationDisplay2").text(snapshot.val().destination);
+// 	$("#frequencyDisplay2").text(snapshot.val().frequency);
+// 	$("#arrivalDisplay2").text(snapshot.val().start);
+// });
 
-database.ref().on("child_added", function(snapshot) {
-	$("#nameDisplay").text(snapshot.val().name);
-	$("#destinationDisplay").text(snapshot.val().destination);
-	$("#frequencyDisplay").text(snapshot.val().frequency);
-	$("#arrivalDisplay").text(snapshot.val().start);
-})
+// database.ref().on("child_added", function(childSnapshot) {
+// 	$("#nameDisplay").append("<div><span>" + childSnapshot.val().name + "</span></div>");
+// 	$("#destinationDisplay").append("<div><span>" + childSnapshot.val().destination + "</span></div>");
+// 	$("#frequencyDisplay").append("<div><span>" + childSnapshot.val().frequency + "</span></div>");
+// 	$("#arrivalDisplay").append("<div><span>" + childSnapshot.val().start + "</span></div>");
+// 	$("#minutesAway").text(timeRemaining);
+
+// });
+
 
