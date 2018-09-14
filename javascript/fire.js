@@ -27,45 +27,30 @@ $("#add-info").on("click", function(event) {
 		frequency: frequency,
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	})
-	var startTime = moment(start, "HH:mm").subtract(1, "years");
+
+	var timeConvert = moment(start, "HH:mm").subtract(1, "years");
 	var currentTime = moment();
-	var timeConvert = moment.duration(currentTime).asMinutes();
 	var timeDiff = moment().diff(moment(timeConvert), "minutes");
 	var timeRemaining = timeDiff % frequency;
-	var arrivalTime = currentTime.add(timeRemaining, "minutes").format("LT")
+	var nextTrainMin = frequency - timeRemaining;
+	var nextArrivalTime = moment().add(nextTrainMin, "minutes").format("hh:mm")
 
-	$("#minutesAway").text(timeRemaining);
-
-	console.log(currentTime);
-	console.log(timeConvert);
-	console.log("Difference in min: " + timeDiff);
+	console.log("Start Time: " + start);
+	console.log("Current Time: " + moment().format("hh:mm"));
+	console.log("Difference in time(min): " + timeDiff);
 	console.log("Time Remaining: " + timeRemaining);
+	console.log("Next Train: " + nextTrainMin);
+	console.log("Arrival Time: " + nextArrivalTime);
+
 
 	var tableRow = $("<tr>").append(
 		$("<td>").text(name),
 		$("<td>").text(destination),
 		$("<td>").text(frequency),
-		$("<td>").text(arrivalTime),
-		$("<td>").text(timeRemaining),
+		$("<td>").text(nextArrivalTime),
+		$("<td>").text(nextTrainMin),
 	);
 
 	$("tbody").append(tableRow);
 });
-
-// database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-// 	$("#nameDisplay2").text(snapshot.val().name);
-// 	$("#destinationDisplay2").text(snapshot.val().destination);
-// 	$("#frequencyDisplay2").text(snapshot.val().frequency);
-// 	$("#arrivalDisplay2").text(snapshot.val().start);
-// });
-
-// database.ref().on("child_added", function(childSnapshot) {
-// 	$("#nameDisplay").append("<div><span>" + childSnapshot.val().name + "</span></div>");
-// 	$("#destinationDisplay").append("<div><span>" + childSnapshot.val().destination + "</span></div>");
-// 	$("#frequencyDisplay").append("<div><span>" + childSnapshot.val().frequency + "</span></div>");
-// 	$("#arrivalDisplay").append("<div><span>" + childSnapshot.val().start + "</span></div>");
-// 	$("#minutesAway").text(timeRemaining);
-
-// });
-
 
