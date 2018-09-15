@@ -20,7 +20,7 @@ $("#add-info").on("click", function(event) {
 	var start = $("#start-input").val().trim();
 	var frequency = $("#frequency-input").val().trim();
 	
-	database.ref().push({
+	database.ref("/user/").push({
 		name: name,
 		destination: destination,
 		start: start,
@@ -54,3 +54,7 @@ $("#add-info").on("click", function(event) {
 	$("tbody").append(tableRow);
 });
 
+$("#delete-info").on("click", function() {
+	firebase.database().ref().remove(database.name);
+
+})

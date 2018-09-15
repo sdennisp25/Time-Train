@@ -1,0 +1,35 @@
+.jumbotron {
+	background-color: yellow;
+}
+
+body {
+	background-color: lightgoldenrodyellow;
+}
+
+h1 {
+	font-weight: bold;
+}
+
+p {
+	margin-left: 2%;
+}
+
+button {
+	width: 100%;
+}
+
+#delete-info {
+	background-color: red;
+}
+
+footer {
+	background-color: yellow;
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	margin-top: 2%;
+}
+
+.card {
+	background-color: rgb(0, 0, 0, 0.2);
+}
