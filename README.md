@@ -3,13 +3,11 @@
 #### This Time-Train Application will allow you to input data to find your next train arrival. The user's data is sent back and forth from firebase and then pushed to the screen to display all of the train arrivals.
 
 ## Programs
-***
 * HTML/CSS
 * Javascript
 * Firebase
 
 ## Input
-***
 #### User will input the following data:
 * Train Time
 * Destination
@@ -17,7 +15,6 @@
 * Frequency (minutes)
 
 ## Output
-***
 #### User will get the following output:
 * Previous user Time-Train input 
 * Name
